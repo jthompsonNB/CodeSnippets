@@ -1,0 +1,8 @@
+/bin/
+
+/target/
+.classpath
+
+generic-entity-management-example/bin
+generic-entity-management-example/target/
+generic-entity-management-example/.classpath

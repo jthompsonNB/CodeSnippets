@@ -1,0 +1,4 @@
+<beans>
+	<class>com.netbuilder.repository.offline.AddessRepositoryOffline</class>
+	<class>com.netbuilder.repository.generic.GenericRepositoryOffline</class>
+</beans>
