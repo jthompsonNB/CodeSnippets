@@ -15,7 +15,7 @@ import com.netbuilder.generic.util.InitialData;
  * @author jthompson
  */
 @Alternative
-public class AddressRepositoryOffline implements AddressRepository {
+public class AddressRepositoryOffline extends GenericRepositoryOffline<Address> implements AddressRepository {
 	@Inject
 	private InitialData initialData;
 	

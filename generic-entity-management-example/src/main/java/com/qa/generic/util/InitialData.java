@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import javax.ejb.Singleton;
 import com.netbuilder.generic.entities.Address;
 import com.netbuilder.generic.entities.Person;
+import com.netbuilder.generic.repository.offline.AddressRepositoryOffline;
 
 /**
  * This holds lists of all the initial data for the system. This is used by the Offline implementations of the repository objects.
@@ -14,6 +15,8 @@ import com.netbuilder.generic.entities.Person;
 public class InitialData {
 	private ArrayList<Address> addresses = new ArrayList<Address>();
 	private ArrayList<Person> persons = new ArrayList<Person>();
+	
+	private AddressRepositoryOffline aro = new AddressRepositoryOffline();
 	
 	/**
 	 * The constructor adds all the test data to the arrays.
@@ -58,4 +61,6 @@ public class InitialData {
 		if(entities.get(0).getClass() == persons.get(0).getClass())
 			persons = (ArrayList<Person>) entities;
 	}
+	
+	
 }

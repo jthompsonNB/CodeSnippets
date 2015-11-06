@@ -15,8 +15,7 @@ import com.netbuilder.generic.util.InitialData;
  *
  * @param <E> The Entity the specific instance of the object will use.
  */
-@Alternative
-public class GenericRepositoryOffline<E> implements GenericRepository<E> {
+ abstract class GenericRepositoryOffline<E> implements GenericRepository<E> {
 	@Inject
 	private InitialData initialData;
 	
