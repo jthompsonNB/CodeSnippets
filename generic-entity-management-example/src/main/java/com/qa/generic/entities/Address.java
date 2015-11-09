@@ -1,10 +1,12 @@
-package com.netbuilder.generic.entities;
+package com.qa.generic.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -16,7 +18,15 @@ import javax.validation.constraints.Size;
  */
 @Entity
 @Table(name="address")
+@NamedQueries({
+	@NamedQuery(name=Address.FIND_BY_AID, query="SELECT a FROM a WHERE a.aid =: aid"),
+	@NamedQuery(name=Address.FIND_BY_POSTCODE, query="SELECT a FROM a WHERE a.postcode =: postcode"),
+	@NamedQuery(name=Address.FIND_BY_LINE1_AND_POSTCODE, query="SELECT a FROM a WHERE a.line1 =: line1 AND a.postcode =: postcode")
+})
 public class Address {
+	public static final String FIND_BY_AID = "Address.findByAid";
+	public static final String FIND_BY_POSTCODE = "Address.findByPostcode";
+	public static final String FIND_BY_LINE1_AND_POSTCODE = "Address.findByLine1AndPostcode";
 	@Id
 	@Column(name="aid", nullable=false, unique=true)
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -42,7 +52,7 @@ public class Address {
 	private String postcode;
 	
 	/**
-	 *  This constructor creates an empty address
+	 *  This constructor creates an empty address.
 	 */
 	public Address() {}
 	

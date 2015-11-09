@@ -1,4 +1,4 @@
-package com.netbuilder.generic.repository;
+package com.qa.generic.repository;
 
 import java.util.List;
 
@@ -25,12 +25,12 @@ public interface GenericRepository<E>{
 	public void persistEntities(List<E> entities);
 	
 	/**
-	 * This method returns all the specified entities. The parameter is needed to define which type of entity to retrieve from the data store.
+	 * This method lists all the entries for the specified entity type
 	 * 
-	 * @param entity 
+	 * @param entity
 	 * @return
 	 */
-	public List<E> listEntities(E entity);
+	public List<E> listAllEntities(E entity);
 	
 	/**
 	 * This method updates a specific entity in its respective data store.

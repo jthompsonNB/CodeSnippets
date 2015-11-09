@@ -1,11 +1,10 @@
-package com.netbuilder.generic.repository.offline;
+package com.qa.generic.repository.offline;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.enterprise.inject.Alternative;
 import javax.inject.Inject;
-import com.netbuilder.generic.repository.GenericRepository;
-import com.netbuilder.generic.util.InitialData;
+import com.qa.generic.repository.GenericRepository;
+import com.qa.generic.util.InitialData;
 
 /**
  * This is the Offline implementation of the Generic repository interface.
@@ -22,6 +21,7 @@ import com.netbuilder.generic.util.InitialData;
 	/**
 	 * This retrieves the list of entities from the Initial data list, adds the entity to it and then returns it to the initial data object.
 	 */
+	@Override
 	public void persistEntity(E entity) {
 		ArrayList<E> es = initialData.getEntityList(entity);
 		es.add(entity);
@@ -31,6 +31,7 @@ import com.netbuilder.generic.util.InitialData;
 	/**
 	 * This retrieves the list of entities from the Initial data list, adds the entities to it and then returns it to the initial data object.
 	 */
+	@Override
 	public void persistEntities(List<E> entities) {
 		ArrayList<E> es = initialData.getEntityList(entities.get(0));
 		es.addAll(entities);
@@ -40,13 +41,15 @@ import com.netbuilder.generic.util.InitialData;
 	/**
 	 * This gets all the entities of the type of entity passed in.
 	 */
-	public List<E> listEntities(E entity) {
+	@Override
+	public List<E> listAllEntities(E entity) {
 		return initialData.getEntityList(entity);
 	}
 
 	/**
 	 * This loops through, finds the entry with the same ID as the passed in object and then replaces it with the passed in object.
 	 */
+	@Override
 	public void updateEntity(E entity) {
 		ArrayList<E> es = initialData.getEntityList(entity);
 		for(int i = 0; i <es.size(); i++) {
@@ -59,6 +62,7 @@ import com.netbuilder.generic.util.InitialData;
 	/**
 	 * This loops through, finds the entry with the same ID as the passed in object and then removes it. 
 	 */
+	@Override
 	public void removeEntity(E entity) {
 		ArrayList<E> es = initialData.getEntityList(entity);
 		for(int i = 0; i <es.size(); i++) {

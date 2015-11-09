@@ -1,7 +1,7 @@
-package com.netbuilder.generic.repository;
+package com.qa.generic.repository;
 
 import java.util.List;
-import com.netbuilder.generic.entities.Address;
+import com.qa.generic.entities.Address;
 
 /**
  * This is the Repository interface for the Address entity.
@@ -24,4 +24,13 @@ public interface AddressRepository {
 	 * @return
 	 */
 	public List<Address> findByPostcode(String postCode);
+	
+	/**
+	 * This returns a single address based on the postcode and the 1st line of the address.
+	 * 
+	 * @param line1
+	 * @param postcode
+	 * @return
+	 */
+	public Address findByLine1AndPostcode(String line1, String postcode);
 }

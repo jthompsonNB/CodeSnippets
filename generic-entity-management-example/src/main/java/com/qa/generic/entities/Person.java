@@ -1,4 +1,4 @@
-package com.netbuilder.generic.entities;
+package com.qa.generic.entities;
 
 import java.util.Calendar;
 import javax.persistence.Column;
@@ -8,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -19,7 +21,15 @@ import javax.validation.constraints.Size;
  */
 @Entity
 @Table(name="person")
+@NamedQueries({
+	@NamedQuery(name=Person.FIND_BY_PID, query="SELECT p FROM p WHERE p.pid =: pid"),
+	@NamedQuery(name=Person.FIND_BY_FULL_NAME, query="SELECT p FROM p WHERE p.fname =: fname AND p.sname := sname"),
+	@NamedQuery(name=Person.FIND_BY_EMAIL, query="SELECT p FROM p WHERE p.email =: email")
+})
 public class Person {
+	public static final String FIND_BY_PID = "Person.findById";
+	public static final String FIND_BY_FULL_NAME = "Person.findByFullName";
+	public static final String FIND_BY_EMAIL = "Person.findByEmail";
 	@Id
 	@Column(name="pid", nullable=false, unique=true)
 	@NotNull
